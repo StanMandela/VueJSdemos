@@ -7,6 +7,7 @@
             <li><strong>Phone:</strong>{{phoneNumber}}</li>
             <li><strong>Email:</strong>{{emailAddress}}</li>
         </ul>
+        <button @click="$emit('delete',id)">Delete</button>
     </li>
 </template>
 
@@ -44,6 +45,18 @@ export default {
         }
 
     },
+     emits:['toggle-favourite','delete'],
+    // or use the blow method
+    // emits:{
+    //     'toggle-favourite': function(id){
+    //         if(id){
+    //             return true;
+    //         }else{
+    //             console.warn('Id is Missing');
+    //             return false;
+    //         }
+    //     }
+    // },
     data(){
         return{
             detailsAreVisible: false,
@@ -56,7 +69,8 @@ export default {
         },
         toggleFavourite(){
         this.$emit('toggle-favourite',this.id);
-    }
+    },
+   
     }
 };
 </script>
